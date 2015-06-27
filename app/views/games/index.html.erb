@@ -1,4 +1,4 @@
-<% provide(:header, "Scorebook") %>
+<% provide(:header, "Games") %>
 
 <% if @games.first.nil? %>
   <div id="no_games_container" class="center">
@@ -7,5 +7,26 @@
     </p>
   </div>
 <% else %>
-  Display all games
+  <% @games.each do |game| %>
+    <div>
+      <p class="lead">
+        <% if game.color == "white" %>
+          &#9898;
+        <% else %>
+          &#9899;
+        <% end %>
+        <%= game.opponent_fname %>
+        <%= game.opponent_lname %>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <%= game.result %>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <%= game.day.to_s %>
+      </p>
+    </div>
+    <hr/>
+  <% end %>
 <% end %>

@@ -3,12 +3,27 @@
 
 //**********
 //*
+//* MIXINS, VARIABLES, ETC.
+//*
+//**********
+
+@mixin box_sizing{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+//**********
+//*
 //* UNIVERSAL
 //*
 //**********
 
+html {
+	overflow-y: scroll;
+}
 body {
-  padding-top: 60px;
+  padding-top: 130px;
 }
 
 //**********

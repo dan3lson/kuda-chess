@@ -1,13 +1,14 @@
 FactoryGirl.define do
   factory :user do
-    sequence(:username) { |n| "kamehameha #{n}" }
+    sequence(:username) { |n| "bfisch #{n}" }
   end
 
   factory :game do
-    opponent_fname "Bobby"
-    opponent_lname "Fischer"
+    sequence(:opponent_fname) { |n| "Paul #{n}" }
+    sequence(:opponent_lname) { |n| "Morphy #{n}" }
     color "white"
     result "0-1"
+    sequence(:day) { |n| "August 6 197#{n}" }
     user
   end
 

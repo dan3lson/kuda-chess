@@ -15,7 +15,7 @@ RSpec.describe User, type: :model do
 
   describe "#initialization" do
     it "returns a username string" do
-      expect(user.username).to include("kamehameha")
+      expect(user.username).to include("bfisch")
     end
   end
 end

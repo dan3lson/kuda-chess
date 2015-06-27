@@ -16,7 +16,7 @@ feature "user logs in for the first time", %Q{
   scenario "\n expect to have a blank slate" do
     visit games_path
 
-    expect(page).to have_content("Scorebook")
+    expect(page).to have_content("Games")
     expect(page).to have_link("New Game")
     expect(page).to have_link("Profile")
     expect(page).to have_content("you don\'t have any games saved.")

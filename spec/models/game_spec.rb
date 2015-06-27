@@ -17,10 +17,10 @@ RSpec.describe Game, type: :model do
 
   describe "#initialization" do
     it "returns an opponent first name string" do
-      expect(game.opponent_fname).to include("Bobby")
+      expect(game.opponent_fname).to include("Paul")
     end
     it "returns an opponent last name string" do
-      expect(game.opponent_lname).to include("Fischer")
+      expect(game.opponent_lname).to include("Morphy")
     end
     it "returns player color string" do
       expect(game.color).to include("white")
