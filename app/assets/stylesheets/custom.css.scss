@@ -1,7 +1,65 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-/* Uncomment if using a navbar */
-/* body {
+//**********
+//*
+//* UNIVERSAL
+//*
+//**********
+
+body {
   padding-top: 60px;
-} */
+}
+
+//**********
+//*
+//* HEADER
+//*
+//**********
+
+//**********
+//*
+//* LOGGED IN
+//*
+//**********
+
+#no_games_container {
+	margin-top: 20em;
+}
+
+//**********
+//*
+//* FOOTER
+//*
+//**********
+
+.navbar_footer{
+	margin: 0;
+	font-weight: normal;
+  a{
+	  color: #000;
+	  &:hover{
+		  color: red;
+		  background: none;
+		  text-decoration: none;
+		  font-weight: normal;
+	  };
+	  &:active{
+		  color: red;
+		  background: none;
+		  text-decoration: none;
+	  };
+  }
+}
+.footer_active_link{
+	color: red;
+}
+
+//**********
+//*
+//* MISCELLANEOUS
+//*
+//**********
+.center {
+	text-align: center;
+}

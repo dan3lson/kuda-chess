@@ -1,0 +1,11 @@
+<% provide(:header, "Scorebook") %>
+
+<% if @games.first.nil? %>
+  <div id="no_games_container" class="center">
+    <p class="lead">
+      Hey there, you don't have any games saved.
+    </p>
+  </div>
+<% else %>
+  Display all games
+<% end %>

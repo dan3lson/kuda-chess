@@ -1,0 +1,25 @@
+<footer class="navbar navbar-default navbar-fixed-bottom navbar_footer" role="navigation">
+	<div class="row">
+		<div class="col-xs-4" align="center">
+			<%=
+        link_to_unless_current image_tag("scorebook_clicked_32.png") +
+  			"<br/>Scorebook".html_safe, root_path,
+  			alt: "Scorebook", class: "img-responsive footer_active_link"
+      %>
+		</div>
+		<div class="col-xs-4" align="center">
+			<%=
+				link_to_unless_current image_tag("new_game_unclicked_32.png") +
+				"<br/>New Game".html_safe, new_game_path,
+				alt: "New Game", class: "img-responsive"
+			%>
+		</div>
+		<div class="col-xs-4" align="center">
+			<%=
+				link_to_unless_current image_tag("profile_unclicked_32.png") +
+				"<br/>Profile".html_safe, users_path,
+				alt: "Profile", class: "img-responsive"
+			%>
+		</div>
+	</div>
+</footer>

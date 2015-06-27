@@ -12,10 +12,10 @@
   <![endif]-->
 </head>
 <body>
-
-<div class="container">
-  <%= yield %>
-</div>
-
+  <%= render "layouts/logged_in_header" %>
+  <div class="container">
+    <%= yield %>
+  </div>
+  <%= render "layouts/logged_in_footer" %>
 </body>
 </html>
