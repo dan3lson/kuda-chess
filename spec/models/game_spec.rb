@@ -27,7 +27,7 @@ RSpec.describe Game, type: :model do
       expect(game.color).to include("white")
     end
     it "returns player color string" do
-      expect(game.result).to include("0-1")
+      expect(game.result).to include("won")
     end
     it "returns a day string" do
       expect(game.day.to_s).to include("08-06")

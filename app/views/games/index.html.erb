@@ -7,26 +7,31 @@
     </p>
   </div>
 <% else %>
-  <% @games.each do |game| %>
-    <div>
-      <p class="lead">
-        <% if game.color == "white" %>
-          &#9898;
-        <% else %>
-          &#9899;
-        <% end %>
-        <%= game.opponent_fname %>
-        <%= game.opponent_lname %>
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        <%= game.result %>
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        <%= game.day.to_s %>
-      </p>
-    </div>
-    <hr/>
-  <% end %>
+  <div class="col-md-5 col-md-offset-4">
+    <% @games.each do |game| %>
+      <div>
+        <p class="lead">
+          <% if game.color == "white" %>
+            &#9898;
+          <% else %>
+            &#9899;
+          <% end %>
+          &nbsp;
+          <% if game.result == "won" %>
+            <span style="color:green; opacity: .5">won</span>
+          <% elsif game.result == "lost" %>
+            <span style="color:red; opacity: .5">lost</span>
+          <% else %>
+            <span style="color:orange; opacity: .5">drew</span>
+          <% end %>
+          against
+          <%= game.opponent_fname %>
+          <%= game.opponent_lname[0] %>.
+          <%= time_ago_in_words(game.day.to_s) %>
+          ago
+        </p>
+      </div>
+      <hr/>
+    <% end %>
+  </div>
 <% end %>

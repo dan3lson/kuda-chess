@@ -7,7 +7,7 @@ FactoryGirl.define do
     sequence(:opponent_fname) { |n| "Paul #{n}" }
     sequence(:opponent_lname) { |n| "Morphy #{n}" }
     color "white"
-    result "0-1"
+    result "won"
     sequence(:day) { |n| "August 6 197#{n}" }
     user
   end

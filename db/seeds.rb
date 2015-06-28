@@ -15,9 +15,9 @@ puts "==============================================="
   game = Game.create!(
     opponent_fname: Faker::Name.first_name,
     opponent_lname: Faker::Name.last_name,
-    color: ["black", "white"].sample,
-    result: ["1-0", "0-1", "1/2-1/2"].sample,
-    day: Faker::Date.between(200000.days.ago, Date.today),
+    color: %w(black white).sample,
+    result: %w(won lost drew).sample,
+    day: Faker::Date.between(356.days.ago, Date.today),
     user: User.find(rand(1..10))
   )
   puts "Game opponent_fname: #{game.opponent_fname}"

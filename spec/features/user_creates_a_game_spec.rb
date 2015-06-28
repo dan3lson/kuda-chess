@@ -17,7 +17,7 @@ feature "user creates a new game", %Q{
     fill_in "Opponent First Name", with: "Paul"
     fill_in "Opponent Last Name", with: "Morphy"
     fill_in "Color", with: "black"
-    fill_in "Result", with: "0-1"
+    fill_in "Result", with: "won"
     fill_in "Day", with: "08/06/1988"
     click_on "Submit"
 

@@ -3,9 +3,9 @@ class Game < ActiveRecord::Base
   has_many :moves
 
   COLOR_OPTIONS = %w(white White black Black)
-  RESULT_OPTIONS = %w(1-0 0-1 1/2-1/2)
+  RESULT_OPTIONS = %w(won Won lost Lost drew Drew)
 
-  before_create :downcase_color
+  before_create :downcase_color, :downcase_result
 
   validates :opponent_fname, presence: true
   validates :opponent_lname, presence: true
@@ -16,5 +16,8 @@ class Game < ActiveRecord::Base
   private
     def downcase_color
       self.color.downcase
+    end
+    def downcase_result
+      self.result.downcase
     end
 end

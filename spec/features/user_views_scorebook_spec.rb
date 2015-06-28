@@ -16,14 +16,14 @@ feature "user views Scorebook", %Q{
     game
 
     expect(page).to have_content(game.opponent_fname)
-    expect(page).to have_content(game.opponent_lname)
+    expect(page).to have_content(game.opponent_lname[0] << ".")
     # if game.color == "white"
     #   expect(page).to have_content("&#9898;")
     # else
     #   expect(page).to have_content("&#9899;")
     # end
     expect(page).to have_content(game.result)
-    expect(page).to have_content(game.day)
+    expect(page).to have_content("ago")
     expect(page).to have_content("Games")
     expect(page).to have_link("New Game")
     expect(page).to have_link("Profile")
