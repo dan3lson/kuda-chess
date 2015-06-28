@@ -17,13 +17,21 @@
             &#9899;
           <% end %>
           &nbsp;
-          <% if game.result == "won" %>
-            <span style="color:green; opacity: .5">won</span>
-          <% elsif game.result == "lost" %>
-            <span style="color:red; opacity: .5">lost</span>
-          <% else %>
-            <span style="color:orange; opacity: .5">drew</span>
-          <% end %>
+          <span class ="result_container">
+            <% if game.result == "won" %>
+              <span id="result_won">
+                <%= link_to "won", game_path(game) %>
+              </span>
+            <% elsif game.result == "lost" %>
+              <span id="result_lost">
+                <%= link_to "lost", game_path(game) %>
+              </span>
+            <% else %>
+              <span id="result_drew">
+                <%= link_to "drew", game_path(game) %>
+              </span>
+            <% end %>
+          </span>
           against
           <%= game.opponent_fname %>
           <%= game.opponent_lname[0] %>.

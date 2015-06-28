@@ -1,0 +1,34 @@
+<% provide(:header, "Games") %>
+
+<div class="col-md-5 col-md-offset-4">
+  <p class="lead">
+    <% if @game.color == "white" %>
+      &#9898;
+    <% else %>
+      &#9899;
+    <% end %>
+    &nbsp;
+    <span class="result_container">
+      <% if @game.result == "won" %>
+        <span id="result_won">
+          won
+        </span>
+      <% elsif @game.result == "lost" %>
+        <span id="result_lost">
+          lost
+        </span>
+      <% else %>
+        <span id="result_drew">
+          drew
+        </span>
+      <% end %>
+    </span>
+    against
+    <%= @game.opponent_fname %>
+    <%= @game.opponent_lname %>
+    <%= time_ago_in_words(@game.day) %>
+    ago in a game that lasted
+    <%= @game.counter %>
+    moves.
+  </p>
+</div>

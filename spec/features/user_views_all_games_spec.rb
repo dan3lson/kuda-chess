@@ -1,19 +1,24 @@
 require 'rails_helper'
 
-feature "user views Scorebook", %Q{
+feature "user views all games", %Q{
   As a user,
-  I want to see all my games.
+  I want to see all my games
+  and click on a result to see
+  that respective game's show page.
 } do
   # Acceptance Criteria
   #
-  # [x] I go to my Scorebook and see all my games
-  # [x] Each game displays my color, opponent name, result, and date
+  # [x] I can visit /games and see all my games
+  # [x] Each game displays my color, opponent name, result,
+  #     and date
+  # [x] There are links leading to every game's show page
 
   let!(:game) { FactoryGirl.create(:game) }
+  let!(:game2) { FactoryGirl.create(:game, result: "lost") }
+  let!(:game3) { FactoryGirl.create(:game, result: "drew") }
 
   scenario "\n expect to see a list of games" do
     visit games_path
-    game
 
     expect(page).to have_content(game.opponent_fname)
     expect(page).to have_content(game.opponent_lname[0] << ".")

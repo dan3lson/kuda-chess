@@ -13,7 +13,9 @@ class Game < ActiveRecord::Base
   validates :result, presence: true, inclusion: { in: RESULT_OPTIONS }
   validates :day, presence: true
   validates :counter,
-            presence: true
+            presence: true,
+            numericality: :only_integer,
+            inclusion: { in: 1..100 }
 
   private
     def downcase_color

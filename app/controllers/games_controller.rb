@@ -6,7 +6,6 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    @move = Move.new
   end
 
   def new
@@ -23,7 +22,7 @@ class GamesController < ApplicationController
     @game.user = @user
     if @game.save
       flash[:success] = "Game created successfully."
-      redirect_to games_path
+      redirect_to @game
     else
       flash.now[:danger] = "Game not created successfully."
       render :new
@@ -59,7 +58,8 @@ class GamesController < ApplicationController
         :opponent_lname,
         :color,
         :result,
-        :day
+        :day,
+        :counter
       )
     end
 end
