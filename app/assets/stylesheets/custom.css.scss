@@ -24,6 +24,7 @@ html {
 }
 body {
   padding-top: 130px;
+	padding-bottom: 70px;
 }
 
 //**********
@@ -54,15 +55,14 @@ body {
   a{
 	  color: #000;
 	  &:hover{
-		  color: red;
 		  background: none;
 		  text-decoration: none;
-		  font-weight: normal;
+		  font-weight: bold;
 	  };
 	  &:active{
-		  color: red;
 		  background: none;
 		  text-decoration: none;
+			font-weight: bold;
 	  };
   }
 }

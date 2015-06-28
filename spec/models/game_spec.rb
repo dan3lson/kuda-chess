@@ -13,6 +13,7 @@ RSpec.describe Game, type: :model do
     it { should validate_presence_of(:opponent_lname) }
     it { should validate_presence_of(:color) }
     it { should validate_presence_of(:result) }
+    it { should validate_presence_of(:day) }
   end
 
   describe "#initialization" do
@@ -27,6 +28,9 @@ RSpec.describe Game, type: :model do
     end
     it "returns player color string" do
       expect(game.result).to include("0-1")
+    end
+    it "returns a day string" do
+      expect(game.day.to_s).to include("08-06")
     end
   end
 end
