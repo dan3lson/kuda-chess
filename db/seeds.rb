@@ -18,6 +18,7 @@ puts "==============================================="
     color: %w(black white).sample,
     result: %w(won lost drew).sample,
     day: Faker::Date.between(356.days.ago, Date.today),
+    counter: rand(4..33),
     user: User.find(rand(1..10))
   )
   puts "Game opponent_fname: #{game.opponent_fname}"
@@ -25,6 +26,7 @@ puts "==============================================="
   puts "Game color: #{game.color}"
   puts "Game result: #{game.result}"
   puts "Game day: #{game.day}"
+  puts "Game counter: #{game.counter}"
   puts "Game user: #{game.user.username}"
   puts
 end

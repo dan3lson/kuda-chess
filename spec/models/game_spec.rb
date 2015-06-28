@@ -14,6 +14,7 @@ RSpec.describe Game, type: :model do
     it { should validate_presence_of(:color) }
     it { should validate_presence_of(:result) }
     it { should validate_presence_of(:day) }
+    it { should validate_presence_of(:counter) }
   end
 
   describe "#initialization" do
@@ -31,6 +32,9 @@ RSpec.describe Game, type: :model do
     end
     it "returns a day string" do
       expect(game.day.to_s).to include("08-06")
+    end
+    it "returns a counter integer" do
+      expect(game.counter).to eq(33)
     end
   end
 end

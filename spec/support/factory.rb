@@ -9,11 +9,11 @@ FactoryGirl.define do
     color "white"
     result "won"
     sequence(:day) { |n| "August 6 197#{n}" }
+    counter 33
     user
   end
 
   factory :move do
-    counter 1
     white "e4"
     black "c5"
     game

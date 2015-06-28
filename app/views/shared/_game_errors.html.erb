@@ -1,9 +1,8 @@
 <% if @game.errors.any? %>
   <div id="error_explanation">
     <h2>
-      Yikes! There are
-      <%= pluralize(@game.errors.count, "error") %>
-      you need to fix:
+      Yikes! Please fix
+      <%= pluralize(@game.errors.count, "error") %>:
     </h2>
     <ul>
       <% @game.errors.full_messages.each do |msg| %>
