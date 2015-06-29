@@ -1,6 +1,6 @@
 <table class="table table-hover lead">
   <th>
-    #
+
   </th>
   <th>
     White
@@ -8,10 +8,10 @@
   <th>
     Black
   </th>
-  <% @game.moves.each do |move| %>
+  <% @game.moves.each_with_index do |move, num| %>
     <tr>
       <td>
-        <%= @game.next_move_number %>.
+        <%= num + 1 %>.
       </td>
       <td>
         <%= move.white %>
