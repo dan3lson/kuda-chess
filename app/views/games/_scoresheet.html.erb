@@ -1,0 +1,24 @@
+<table class="table lead">
+  <th>
+    #
+  </th>
+  <th>
+    White
+  </th>
+  <th>
+    Black
+  </th>
+  <% @game.moves.each do |move| %>
+    <tr>
+      <td>
+        #
+      </td>
+      <td>
+        <%= move.white %>
+      </td>
+      <td>
+        <%= move.black %>
+      </td>
+    </tr>
+  <% end %>
+</table>

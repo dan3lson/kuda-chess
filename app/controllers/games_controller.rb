@@ -1,11 +1,11 @@
 class GamesController < ApplicationController
-
   def index
     @games = Game.order("created_at ASC")
   end
 
   def show
     @game = Game.find(params[:id])
+    @move = Move.new
   end
 
   def new
@@ -58,8 +58,7 @@ class GamesController < ApplicationController
         :opponent_lname,
         :color,
         :result,
-        :day,
-        :counter
+        :day
       )
     end
 end

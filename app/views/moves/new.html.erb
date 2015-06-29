@@ -1,0 +1,27 @@
+<h1>
+  <% if @game.color == "white" %>
+    &#9898;
+  <% else %>
+    &#9899;
+  <% end %>
+  &nbsp;
+  <span class="result_container">
+    <% if @game.result == "won" %>
+      <span id="result_won">
+        won
+      </span>
+    <% elsif @game.result == "lost" %>
+      <span id="result_lost">
+        lost
+      </span>
+    <% else %>
+      <span id="result_drew">
+        drew
+      </span>
+    <% end %>
+  </span>
+  Game against
+  <%= link_to @game.opponent_fname, game_path(@game) %>
+</h1>
+
+<%= render "form" %>

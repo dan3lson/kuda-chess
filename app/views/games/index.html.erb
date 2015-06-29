@@ -9,35 +9,37 @@
 <% else %>
   <div class="col-md-5 col-md-offset-4">
     <% @games.each do |game| %>
-      <div>
-        <p class="lead">
-          <% if game.color == "white" %>
-            &#9898;
+      <div class="lead">
+        <% if game.color == "white" %>
+          &#9898;
+        <% else %>
+          &#9899;
+        <% end %>
+        &nbsp;
+        <span class ="result_container">
+          <% if game.result == "won" %>
+            <span id="result_won">
+              <%= link_to "won", game_path(game) %>
+            </span>
+          <% elsif game.result == "lost" %>
+            <span id="result_lost">
+              <%= link_to "lost", game_path(game) %>
+            </span>
           <% else %>
-            &#9899;
+            <span id="result_drew">
+              <%= link_to "drew", game_path(game) %>
+            </span>
           <% end %>
-          &nbsp;
-          <span class ="result_container">
-            <% if game.result == "won" %>
-              <span id="result_won">
-                <%= link_to "won", game_path(game) %>
-              </span>
-            <% elsif game.result == "lost" %>
-              <span id="result_lost">
-                <%= link_to "lost", game_path(game) %>
-              </span>
-            <% else %>
-              <span id="result_drew">
-                <%= link_to "drew", game_path(game) %>
-              </span>
-            <% end %>
-          </span>
-          against
-          <%= game.opponent_fname %>
-          <%= game.opponent_lname[0] %>.
-          <%= time_ago_in_words(game.day.to_s) %>
-          ago
-        </p>
+        </span>
+        against
+        <%= game.opponent_fname %>
+        <%= game.opponent_lname[0] %>.
+        <%# binding.pry %>
+        on
+        <%= game.display_better_date %>
+        <% unless game.has_moves? %>
+          &#9816;
+        <% end %>
       </div>
       <hr/>
     <% end %>

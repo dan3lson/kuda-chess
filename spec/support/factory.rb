@@ -9,7 +9,6 @@ FactoryGirl.define do
     color "white"
     result "won"
     sequence(:day) { |n| "August 6 197#{n}" }
-    counter 33
     user
   end
 

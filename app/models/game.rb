@@ -12,10 +12,19 @@ class Game < ActiveRecord::Base
   validates :color, presence: true, inclusion: { in: COLOR_OPTIONS }
   validates :result, presence: true, inclusion: { in: RESULT_OPTIONS }
   validates :day, presence: true
-  validates :counter,
-            presence: true,
-            numericality: :only_integer,
-            inclusion: { in: 1..100 }
+
+  def has_moves?
+    self.moves.any?
+  end
+
+  def next_move_number
+    "#{self.moves.count + 1}."
+  end
+
+  def display_better_date
+    new_date = self.day.to_s.split("-")
+    new_date.rotate.join("/")
+  end
 
   private
     def downcase_color

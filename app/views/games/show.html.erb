@@ -1,7 +1,8 @@
 <% provide(:header, "Games") %>
 
 <div class="col-md-5 col-md-offset-4">
-  <p class="lead">
+  <div class="lead">
+    <%#= render "games/color_and_result" %>
     <% if @game.color == "white" %>
       &#9898;
     <% else %>
@@ -26,9 +27,23 @@
     against
     <%= @game.opponent_fname %>
     <%= @game.opponent_lname %>
-    <%= time_ago_in_words(@game.day) %>
-    ago in a game that lasted
-    <%= @game.counter %>
-    moves.
-  </p>
+    on <%= @game.display_better_date %>:
+    <% if @game.has_moves? %>
+      in a game that lasted
+      <%= @game.moves.count %>
+      moves:
+    <% end %>
+  </div>
+  <div>
+    <% if @game.has_moves? %>
+      <%= render "games/scoresheet" %>
+    <% else %>
+      <div class="bg-warning center">
+        &#9816;
+        This game is empty - add moves below!
+        &#9816;
+      </div>
+    <% end %>
+  </div>
+  <%= render "moves/form" %>
 </div>

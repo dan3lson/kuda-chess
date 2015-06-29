@@ -28,10 +28,6 @@
         <%= f.label :day, class: "sr-only" %>
         <%= f.date_field :day, class: "form-control" %>
       </div>
-      <div class="form-group">
-        <%= f.label :counter, class: "sr-only" %>
-        <%= f.number_field :counter, in: 1..100, class: "form-control", placeholder: "Number of Moves *" %>
-      </div>
       <p>
         <%= f.submit "Submit", class: "btn btn-default form-control" %>
       </p>

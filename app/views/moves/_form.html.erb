@@ -1,0 +1,38 @@
+<div class="well">
+  <% if @game.has_moves? %>
+    <p class="lead">Add Another Move</p>
+  <% end %>
+  <%= form_for [@game, @move] do |f| %>
+    <% if @move.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          Yikes! Please fix
+          <%= pluralize(@move.errors.count, "error") %>:
+        </h2>
+        <ul>
+          <% @move.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="row">
+      <div class="col-xs-1">
+        <h4><%= @game.next_move_number %></h4>
+      </div>
+      <div class="col-xs-5">
+        <div class="form-group">
+          <%= f.label :white, class: "sr-only" %>
+          <%= f.text_field :white, class: "form-control", placeholder: "White" %>
+        </div>
+      </div>
+      <div class="col-xs-5">
+        <div class="form-group">
+          <%= f.label :black, class: "sr-only" %>
+          <%= f.text_field :black, class: "form-control", placeholder: "Black"  %>
+        </div>
+      </div>
+    </div>
+    <%= f.submit "Submit", class: "btn btn-default form-control" %>
+  <% end %>
+</div>
