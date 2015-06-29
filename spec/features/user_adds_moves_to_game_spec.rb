@@ -5,7 +5,7 @@ feature "user adds one move for a game", %Q{
   I want to add one move to a
   a game I've already saved.
 } do
-  
+
   # Acceptance Criteria
   #
   # [x] I can visit /games/:id
