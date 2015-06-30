@@ -8,7 +8,7 @@
   <th>
     Black
   </th>
-  <% @game.moves.each_with_index do |move, num| %>
+  <% @game.moves.reverse.each_with_index do |move, num| %>
     <tr>
       <td>
         <%= num + 1 %>.
