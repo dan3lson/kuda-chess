@@ -43,10 +43,10 @@
     <% end %>
   </div>
   <%= render "moves/form" %>
+  <%= link_to "Edit Game", edit_game_path(@game), class: "btn btn-warning form-control" %>
   <%= link_to "Delete", game_path(@game),
     class: "btn btn-small btn-danger form-control",
     # Why does this delete-alert pop up twice?
     method: :delete, data: { confirm: "Are you sure?" }
   %>
-
 </div>
