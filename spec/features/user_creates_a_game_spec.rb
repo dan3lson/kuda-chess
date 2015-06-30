@@ -10,8 +10,10 @@ feature "user creates a new game", %Q{
   #
   # [x] I can visit /games/new
   # [x] I can complete a form for game details
+  # [x] Submitting the form redirect to that
+  #     game's show page
 
-  scenario "\n complete a totally valid Game form" do
+  scenario "\n create a totally valid Game form" do
     visit new_game_path
     fill_in "Opponent First Name", with: "Paul"
     fill_in "Opponent Last Name", with: "Morphy"
@@ -23,7 +25,7 @@ feature "user creates a new game", %Q{
     expect(page).to have_content("Game created successfully.")
   end
 
-  scenario "\n complete a totally invalid Game form" do
+  scenario "\n create a totally invalid Game form" do
     visit new_game_path
     fill_in "Opponent First Name", with: ""
     fill_in "Opponent Last Name", with: ""
