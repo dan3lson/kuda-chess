@@ -43,10 +43,16 @@
     <% end %>
   </div>
   <%= render "moves/form" %>
-  <%= link_to "Edit Game", edit_game_path(@game), class: "btn btn-warning form-control" %>
-  <%= link_to "Delete Game", game_path(@game),
-    class: "btn btn-small btn-danger form-control",
-    # Why does this delete-alert pop up twice?
-    method: :delete, data: { confirm: "Are you sure?" }
-  %>
+  <div class="row">
+    <div class="col-xs-6">
+      <%= link_to "Edit Game", edit_game_path(@game), class: "btn btn-warning form-control" %>
+    </div>
+    <div class="col-xs-6">
+      <%= link_to "Delete Game", game_path(@game),
+        class: "btn btn-small btn-danger form-control",
+        # Why does this delete-alert pop up twice?
+        method: :delete, data: { confirm: "Are you sure?" }
+      %>
+    </div>
+  </div>
 </div>
