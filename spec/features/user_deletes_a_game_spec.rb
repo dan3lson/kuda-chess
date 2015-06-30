@@ -26,7 +26,7 @@ feature "user deletes an existing game", %Q{
       user: nil
     )
     visit game_path(game)
-    click_on "Delete"
+    click_on "Delete Game"
     expect(page).to have_content("Game deleted successfully.")
     expect(Game.count).to eq(0)
   end
