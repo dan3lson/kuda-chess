@@ -27,11 +27,8 @@
     against
     <%= @game.opponent_fname %>
     <%= @game.opponent_lname %>
-    on <%= @game.display_better_date %>,
-    <% if @game.has_moves? %>
-      in a game that lasted
-      <%= @game.moves.count %>
-      moves:
+    on <%= @game.display_better_date %><% if @game.has_moves? %>, in a game that lasted
+      <%= pluralize(@game.moves.count, "move") %>:
     <% end %>
   </div>
   <div>
@@ -46,4 +43,10 @@
     <% end %>
   </div>
   <%= render "moves/form" %>
+  <%= link_to "Delete", game_path(@game),
+    class: "btn btn-small btn-danger form-control",
+    # Why does this delete-alert pop up twice?
+    method: :delete, data: { confirm: "Are you sure?" }
+  %>
+
 </div>
