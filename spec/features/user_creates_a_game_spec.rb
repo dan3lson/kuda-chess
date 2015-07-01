@@ -10,32 +10,40 @@ feature "user creates a new game", %Q{
   #
   # [x] I can visit /games/new
   # [x] I can complete a form for game details
-  # [x] Submitting the form redirect to that
+  # [x] I see errors on the page if fields
+  #     are left blank
+  # [x] Submitting the form redirects to that
   #     game's show page
 
-  scenario "\n create a totally valid Game form" do
-    visit new_game_path
-    fill_in "Opponent First Name", with: "Paul"
-    fill_in "Opponent Last Name", with: "Morphy"
-    fill_in "Color", with: "black"
-    fill_in "Result", with: "won"
-    fill_in "Day", with: "08/06/1988"
-    click_on "Submit"
+  describe "complete new Game form" do
+    scenario "\n inputs are valid" do
+      visit new_game_path
 
-    expect(page).to have_content("Game created successfully.")
-  end
+      fill_in "Opponent First Name", with: "Paul"
+      fill_in "Opponent Last Name", with: "Morphy"
+      fill_in "Color", with: "black"
+      fill_in "Result", with: "won"
+      fill_in "Day", with: "08/06/1988"
 
-  scenario "\n create a totally invalid Game form" do
-    visit new_game_path
-    fill_in "Opponent First Name", with: ""
-    fill_in "Opponent Last Name", with: ""
-    fill_in "Color", with: ""
-    fill_in "Result", with: ""
-    fill_in "Day", with: ""
-    click_on "Submit"
+      click_on "Submit"
 
-    expect(page).to have_content("Yikes!")
-    expect(page).to have_content("errors")
-    expect(page).to have_content("Please fix")
+      expect(page).to have_content("Game created successfully.")
+    end
+
+    scenario "\n inputs are invalid" do
+      visit new_game_path
+
+      fill_in "Opponent First Name", with: ""
+      fill_in "Opponent Last Name", with: ""
+      fill_in "Color", with: ""
+      fill_in "Result", with: ""
+      fill_in "Day", with: ""
+      
+      click_on "Submit"
+
+      expect(page).to have_content("Yikes!")
+      expect(page).to have_content("errors")
+      expect(page).to have_content("Please fix")
+    end
   end
 end

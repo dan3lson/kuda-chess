@@ -28,31 +28,27 @@
     <%= @game.opponent_fname %>
     <%= @game.opponent_lname %>
     on <%= @game.display_better_date %><% if @game.has_moves? %>, in a game that lasted
-      <%= pluralize(@game.moves.count, "move") %>:
+      <%= pluralize(@game.moves.count, "move") %>.
+    <% else %>.
     <% end %>
   </div>
-  <div>
-    <% if @game.has_moves? %>
-      <%= render "games/scoresheet" %>
-    <% else %>
-      <div class="bg-warning center">
-        &#9816;
-        This game is empty - add moves below!
-        &#9816;
-      </div>
-    <% end %>
-  </div>
-  <%= render "moves/form" %>
-  <div class="row">
-    <div class="col-xs-6">
-      <%= link_to "Edit Game", edit_game_path(@game), class: "btn btn-warning form-control" %>
+
+  <% if @game.has_moves? %>
+    <%= render "games/scoresheet" %>
+  <% else %>
+    <div class="bg-warning center">
+      &#9816;
+      This game is empty.
+      &#9816;
     </div>
-    <div class="col-xs-6">
-      <%= link_to "Delete Game", game_path(@game),
-        class: "btn btn-small btn-danger form-control",
-        # Why does this delete-alert pop up twice?
-        method: :delete, data: { confirm: "Are you sure?" }
-      %>
-    </div>
+  <% end %>
+
+  <div class="well">
+    <p class="lead">
+      Add Move
+    </p>
+    <%= render "moves/form" %>
   </div>
+
+  <%= render "games/game_links" %>
 </div>

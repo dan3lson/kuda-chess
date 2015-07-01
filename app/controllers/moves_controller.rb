@@ -10,6 +10,7 @@ class MovesController < ApplicationController
   end
 
   def edit
+    @game = Game.find(params[:game_id])
     @move = Move.find(params[:id])
   end
 
@@ -32,7 +33,7 @@ class MovesController < ApplicationController
 
     if @move.update(move_params)
       flash[:success] = "Move edited successfully."
-      redirect_to @move
+      redirect_to @game
     else
       flash.now[:danger] = "Move not edited successfully."
       render :edit
