@@ -1,17 +1,13 @@
-puts "==============================================="
-puts "Creating Users"
-puts "==============================================="
+Rails.logger.info "==============================================="
+Rails.logger.info "Creating Users"
+Rails.logger.info "==============================================="
 
 user = User.create!(username: Faker::Internet.user_name)
-puts "Username: #{user.username}"
-# 10.times do
-#   user = User.create!(username: Faker::Internet.user_name)
-#   puts "Username: #{user.username}"
-# end
+Rails.logger.info "Username: #{user.username}"
 
-puts "==============================================="
-puts "Creating Games"
-puts "==============================================="
+Rails.logger.info "==============================================="
+Rails.logger.info "Creating Games"
+Rails.logger.info "==============================================="
 
 50.times do
   game = Game.create!(
@@ -20,21 +16,20 @@ puts "==============================================="
     color: %w(black white).sample,
     result: %w(won lost drew).sample,
     day: Faker::Date.between(356.days.ago, Date.today),
-    # user: User.find(rand(1..10))
     user: User.first
   )
-  puts "Game opponent_fname: #{game.opponent_fname}"
-  puts "Game opponent_lname: #{game.opponent_lname}"
-  puts "Game color: #{game.color}"
-  puts "Game result: #{game.result}"
-  puts "Game day: #{game.day}"
-  puts "Game user: #{game.user.username}"
-  puts
+  Rails.logger.info "Game opponent_fname: #{game.opponent_fname}"
+  Rails.logger.info "Game opponent_lname: #{game.opponent_lname}"
+  Rails.logger.info "Game color: #{game.color}"
+  Rails.logger.info "Game result: #{game.result}"
+  Rails.logger.info "Game day: #{game.day}"
+  Rails.logger.info "Game user: #{game.user.username}"
+  Rails.logger.info
 end
 
-puts "==============================================="
-puts "Creating Moves"
-puts "==============================================="
+Rails.logger.info "==============================================="
+Rails.logger.info "Creating Moves"
+Rails.logger.info "==============================================="
 PIECES = %w(K N B Q R P)
 LETTERS = %w(a b c d e f g h)
 NUMBERS = %w(1 2 3 4 5 6 7 8)
@@ -48,7 +43,7 @@ Game.all.each do |game|
       black: blacks_move,
       game: game
     )
-    print "Opponent \'#{game.opponent_fname} #{game.opponent_lname[0]}.\' --> "
-    puts "white: #{whites_move} black: #{blacks_move}"
+    Rails.logger.info "Opponent \'#{game.opponent_fname} #{game.opponent_lname[0]}.\' --> "
+    Rails.logger.info "white: #{whites_move} black: #{blacks_move}"
   end
 end

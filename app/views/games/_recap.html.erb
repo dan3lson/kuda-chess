@@ -1,9 +1,9 @@
 <% if @game.color == "white" %>
-  &#9898;
+  <span class="white_circle"></span>
 <% else %>
-  &#9899;
+  <span class="black_circle"></span>
 <% end %>
-&nbsp;
+
 <span class="result_container">
   <% if @game.result == "won" %>
     <span id="result_won">
