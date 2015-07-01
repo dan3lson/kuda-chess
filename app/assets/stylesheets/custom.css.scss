@@ -13,6 +13,7 @@
 	box-sizing: border-box;
 }
 $lighten: 23%;
+$circle_size: 27px;
 
 //**********
 //*
@@ -24,8 +25,8 @@ html {
 	overflow-y: scroll;
 }
 body {
-  padding-top: 130px;
-	padding-bottom: 70px;
+  padding-top: 100px;
+	padding-bottom: 100px;
 }
 
 //**********
@@ -33,6 +34,10 @@ body {
 //* HEADER
 //*
 //**********
+.navbar-default {
+	background: #FFF;
+	border-color: #F2F2F2;
+}
 
 //**********
 //*
@@ -40,41 +45,66 @@ body {
 //*
 //**********
 
+.circle {
+	border-radius: $circle_size;
+	width: $circle_size;
+	height: $circle_size;
+	display: inline-block;
+}
+.white_circle {
+	@extend .circle;
+	background: #FFF;
+	border: 1px solid #000;
+}
+.black_circle {
+	@extend .circle;
+	background: #000;
+	border: 1px solid #FFF;
+}
+.recap_container {
+	opacity: .6;
+}
+.vertical_align {
+	vertical-align: 7px;
+}
 #no_games_container {
 	margin-top: 20em;
 }
-.result_container {
+.recap_container {
 	opacity: .6;
 }
-#result_won {
+#recap_won {
 	color: green;
 }
-#result_lost {
+#recap_lost {
 	color: red;
 }
-#result_drew {
+#recap_drew {
 	color: orange;
 }
-#result_won a {
+#recap_won a {
 	color: green;
 }
-#result_won a:hover {
-	color: lighten(green, $lighten);
+#recap_won a:hover {
+	color: darken(green, $lighten);
 	text-decoration: none;
 }
-#result_lost a {
+#recap_lost a {
 	color: red;
 }
-#result_lost a:hover {
-	color: lighten(red, $lighten);
+#recap_lost a:hover {
+	color: darken(red, $lighten);
 	text-decoration: none;
 }
-#result_drew a {
+#recap_drew a {
 	color: orange;
 }
-#result_drew a:hover {
-	color: lighten(orange, $lighten);
+#recap_drew a:hover {
+	color: darken(orange, $lighten);
 	text-decoration: none;
+}
+.game_card_container {
+	margin-bottom: 10px;
 }
 table a {
 	color:#000;

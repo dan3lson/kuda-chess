@@ -7,38 +7,40 @@
     </p>
   </div>
 <% else %>
-  <div class="col-md-5 col-md-offset-4">
+  <div class="col-md-6 col-md-offset-3">
     <% @games.each do |game| %>
-      <div class="lead">
+      <div class="lead game_card_container">
         <% if game.color == "white" %>
-          &#9898;
+          <span class="white_circle"></span>
         <% else %>
-          &#9899;
+          <span class="black_circle"></span>
         <% end %>
-        &nbsp;
-        <span class ="result_container">
+
+        <span class ="vertical_align recap_container">
           <% if game.result == "won" %>
-            <span id="result_won">
+            <span id="recap_won">
               <%= link_to "won", game_path(game) %>
             </span>
           <% elsif game.result == "lost" %>
-            <span id="result_lost">
+            <span id="recap_lost">
               <%= link_to "lost", game_path(game) %>
             </span>
           <% else %>
-            <span id="result_drew">
+            <span id="recap_drew">
               <%= link_to "drew", game_path(game) %>
             </span>
           <% end %>
         </span>
-        against
-        <%= game.opponent_fname %>
-        <%= game.opponent_lname[0] %>.
-        on
-        <%= game.display_better_date %>
-        <% unless game.has_moves? %>
-          &#9816;
-        <% end %>
+        <span class="vertical_align">
+          <small>against</small>
+          <%= game.opponent_fname %>
+          <%= game.opponent_lname[0] %>.
+          <small>on</small>
+          <%= game.display_better_date %>
+          <% unless game.has_moves? %>
+            &#9816;
+          <% end %>
+        </span>
       </div>
       <hr/>
     <% end %>

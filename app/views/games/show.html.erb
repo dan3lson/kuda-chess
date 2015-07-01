@@ -1,36 +1,37 @@
 <% provide(:header, "Games") %>
 
-<div class="col-md-5 col-md-offset-4">
+<div class="col-md-6 col-md-offset-3">
   <div class="lead">
     <%#= render "games/color_and_result" %>
-    <% if @game.color == "white" %>
-      &#9898;
-    <% else %>
-      &#9899;
-    <% end %>
-    &nbsp;
-    <span class="result_container">
-      <% if @game.result == "won" %>
-        <span id="result_won">
-          won
-        </span>
-      <% elsif @game.result == "lost" %>
-        <span id="result_lost">
-          lost
-        </span>
+    <div class="well">
+      <% if @game.color == "white" %>
+        <span class="white_circle"></span>
       <% else %>
-        <span id="result_drew">
-          drew
-        </span>
+        <span class="black_circle"></span>
       <% end %>
-    </span>
-    against
-    <%= @game.opponent_fname %>
-    <%= @game.opponent_lname %>
-    on <%= @game.display_better_date %><% if @game.has_moves? %>, in a game that lasted
-      <%= pluralize(@game.moves.count, "move") %>.
-    <% else %>.
-    <% end %>
+      <span class="result_container">
+        <% if @game.result == "won" %>
+          <span id="result_won">
+            won
+          </span>
+        <% elsif @game.result == "lost" %>
+          <span id="result_lost">
+            lost
+          </span>
+        <% else %>
+          <span id="result_drew">
+            drew
+          </span>
+        <% end %>
+      </span>
+      against
+      <%= @game.opponent_fname %>
+      <%= @game.opponent_lname %>
+      on <%= @game.display_better_date %><% if @game.has_moves? %>, in a game that lasted
+        <%= pluralize(@game.moves.count, "move") %>.
+      <% else %>.
+      <% end %>
+    </div>
   </div>
 
   <% if @game.has_moves? %>
