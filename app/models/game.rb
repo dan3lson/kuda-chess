@@ -1,6 +1,6 @@
 class Game < ActiveRecord::Base
   belongs_to :user
-  has_many :moves
+  has_many :moves, dependent: :destroy
 
   COLOR_OPTIONS = %w(white White black Black)
   RESULT_OPTIONS = %w(won Won lost Lost drew Drew)

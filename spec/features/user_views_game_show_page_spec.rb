@@ -16,32 +16,34 @@ feature "user views a game\'s show page", %Q{
   let!(:move) { FactoryGirl.create(:move) }
   let!(:move2) { FactoryGirl.create(:move) }
 
-  scenario "\n expect to see a specific game without moves" do
-    visit game_path(game)
+  describe "view game show page" do
+    scenario "\n view game without moves" do
+      visit game_path(game)
 
-    expect(page).to have_content(game.opponent_fname)
-    expect(page).to have_content(game.opponent_lname)
-    expect(page).to have_content("⚪")
-    expect(page).to have_content(game.result)
-    expect(page).to have_content("on")
-    expect(page).to have_content("♘ This game is empty - add moves below! ♘")
-    expect(page).to have_content("1.")
-  end
+      expect(page).to have_content(game.opponent_fname)
+      expect(page).to have_content(game.opponent_lname)
+      expect(page).to have_content("⚪")
+      expect(page).to have_content(game.result)
+      expect(page).to have_content("on")
+      expect(page).to have_content("♘ This game is empty. ♘")
+      expect(page).to have_content("1.")
+    end
 
-  scenario "\n expect to see a specific game with over 2 moves" do
-    game2.moves << move
-    game2.moves << move2
+    scenario "\n view game with moves" do
+      game2.moves << move
+      game2.moves << move2
 
-    visit game_path(game2)
+      visit game_path(game2)
 
-    expect(page).to have_content(game2.opponent_fname)
-    expect(page).to have_content(game2.opponent_lname)
-    expect(page).to have_content("⚪")
-    expect(page).to have_content(game2.result)
-    expect(page).not_to have_content("♘ This game is empty - add moves below! ♘")
-    expect(page).to have_content("on")
-    expect(page).to have_content("1.")
-    expect(page).to have_content("2.")
-    expect(page).to have_content("3.")
+      expect(page).to have_content(game2.opponent_fname)
+      expect(page).to have_content(game2.opponent_lname)
+      expect(page).to have_content("⚪")
+      expect(page).to have_content(game2.result)
+      expect(page).not_to have_content("♘ This game is empty. ♘")
+      expect(page).to have_content("on")
+      expect(page).to have_content("1.")
+      expect(page).to have_content("2.")
+      expect(page).to have_content("3.")
+    end
   end
 end

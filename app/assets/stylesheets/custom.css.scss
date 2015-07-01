@@ -76,6 +76,14 @@ body {
 	color: lighten(orange, $lighten);
 	text-decoration: none;
 }
+table a {
+	color:#000;
+}
+table a:hover {
+	text-decoration: none;
+	color: #000;
+}
+
 
 //**********
 //*

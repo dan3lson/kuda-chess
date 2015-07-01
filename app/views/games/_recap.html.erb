@@ -1,0 +1,27 @@
+<% if @game.color == "white" %>
+  &#9898;
+<% else %>
+  &#9899;
+<% end %>
+&nbsp;
+<span class="result_container">
+  <% if @game.result == "won" %>
+    <span id="result_won">
+      <%= link_to "won", game_path(@game) %>
+    </span>
+  <% elsif @game.result == "lost" %>
+    <span id="result_lost">
+      <%= link_to "lost", game_path(@game) %>
+    </span>
+  <% else %>
+    <span id="result_drew">
+      <%= link_to "drew", game_path(@game) %>
+    </span>
+  <% end %>
+</span>
+against
+<%= @game.opponent_fname %>
+<%= @game.opponent_lname %>
+on <%= @game.display_better_date %><% if @game.has_moves? %>, in a game that lasted
+  <%= pluralize(@game.moves.count, "move") %>.
+<% end %>

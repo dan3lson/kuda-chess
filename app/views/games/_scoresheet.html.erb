@@ -1,24 +1,23 @@
 <table class="table table-hover lead">
-  <th>
-
-  </th>
-  <th>
-    White
-  </th>
-  <th>
-    Black
-  </th>
+  <th></th>
+  <th>White</th>
+  <th>Black</th>
+  <th></th>
+  <th></th>
   <% @game.moves.reverse.each_with_index do |move, num| %>
     <tr>
+      <td><%= num + 1 %>.</td>
+      <td><%= move.white %></td>
+      <td><%= move.black %></td>
       <td>
-        <%= num + 1 %>.
+        <%=
+          # link_to "&#10000;".html_safe,
+          link_to "Edit",
+          edit_game_move_path(@game, move),
+          class: "blank_hover_link"
+        %>
       </td>
-      <td>
-        <%= move.white %>
-      </td>
-      <td>
-        <%= move.black %>
-      </td>
+      <td>&#10006;</td>
     </tr>
   <% end %>
 </table>
