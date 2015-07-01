@@ -22,7 +22,7 @@ feature "user views a game\'s show page", %Q{
 
       expect(page).to have_content(game.opponent_fname)
       expect(page).to have_content(game.opponent_lname)
-      expect(page).to have_content("⚪")
+      expect(page).to have_css("span.white_circle")
       expect(page).to have_content(game.result)
       expect(page).to have_content("on")
       expect(page).to have_content("♘ This game is empty. ♘")
@@ -37,7 +37,7 @@ feature "user views a game\'s show page", %Q{
 
       expect(page).to have_content(game2.opponent_fname)
       expect(page).to have_content(game2.opponent_lname)
-      expect(page).to have_content("⚪")
+      expect(page).to have_css("span.white_circle")
       expect(page).to have_content(game2.result)
       expect(page).not_to have_content("♘ This game is empty. ♘")
       expect(page).to have_content("on")

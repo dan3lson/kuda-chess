@@ -29,9 +29,9 @@ feature "user views all games", %Q{
       expect(page).to have_content(game.opponent_lname[0] << ".")
 
       if game.color == "white"
-        expect(page).to have_content("⚪")
+        expect(page).to have_css("span.white_circle")
       else
-        expect(page).to have_content("⚫")
+        expect(page).to have_content("span.black_circle")
       end
 
       expect(page).to have_link(game.result)
@@ -50,11 +50,11 @@ feature "user views all games", %Q{
 
       expect(page).to have_content(game4.opponent_fname)
       expect(page).to have_content(game4.opponent_lname[0] << ".")
-      
+
       if game.color == "white"
-        expect(page).to have_content("⚪")
+        expect(page).to have_css("span.white_circle")
       else
-        expect(page).to have_content("⚫")
+        expect(page).to have_css("span.black_circle")
       end
 
       expect(page).to have_link(game4.result)
