@@ -13,7 +13,6 @@ feature "user deletes an existing game", %Q{
   # [x] Clicking on 'delete' removes
   #     the game and displays page for all my games
 
-  # Why doesn't a let!(:game) { ... } work?
   # Are test objects being deleted after each scenario, etc.?
 
   describe "\n delete game from its show page" do
