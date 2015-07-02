@@ -12,8 +12,16 @@
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
+
 $lighten: 23%;
+
 $circle_size: 27px;
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
 
 //**********
 //*
@@ -24,6 +32,7 @@ $circle_size: 27px;
 html {
 	overflow-y: scroll;
 }
+
 body {
   padding-top: 100px;
 	padding-bottom: 100px;
@@ -34,6 +43,7 @@ body {
 //* HEADER
 //*
 //**********
+
 .navbar-default {
 	background: #FFF;
 	border-color: #F2F2F2;
@@ -51,54 +61,69 @@ body {
 	height: $circle_size;
 	display: inline-block;
 }
+
 .white_circle {
 	@extend .circle;
 	background: #FFF;
 	border: 1px solid #000;
 }
+
 .black_circle {
 	@extend .circle;
 	background: #000;
 	border: 1px solid #FFF;
 }
+
 .recap_container {
 	opacity: .6;
 }
+
 .vertical_align {
 	vertical-align: 7px;
 }
+
 #no_games_container {
 	margin-top: 20em;
 }
+
 .recap_container {
 	opacity: .6;
 }
+
 #recap_won {
 	color: green;
 }
+
 #recap_lost {
 	color: red;
 }
+
 #recap_drew {
 	color: orange;
 }
+
 #recap_won a {
 	color: green;
 }
+
 #recap_won a:hover {
 	color: darken(green, $lighten);
 	text-decoration: none;
 }
+
 #recap_lost a {
 	color: red;
 }
+
 #recap_lost a:hover {
 	color: darken(red, $lighten);
 	text-decoration: none;
 }
+
 #recap_drew a {
 	color: orange;
 }
+
 #recap_drew a:hover {
 	color: darken(orange, $lighten);
 	text-decoration: none;
@@ -106,14 +131,47 @@ body {
 .game_card_container {
 	margin-bottom: 10px;
 }
+
 table a {
 	color:#000;
 }
+
 table a:hover {
 	text-decoration: none;
 	color: #000;
 }
 
+//**********
+//*
+//* FORMS
+//*
+//**********
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
 
 //**********
 //*
@@ -138,6 +196,7 @@ table a:hover {
 	  };
   }
 }
+
 .footer_active_link{
 	color: red;
 }
@@ -147,6 +206,15 @@ table a:hover {
 //* MISCELLANEOUS
 //*
 //**********
+
 .center {
 	text-align: center;
+}
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
 }

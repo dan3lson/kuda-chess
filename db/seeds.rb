@@ -2,7 +2,11 @@ Rails.logger.info "==============================================="
 Rails.logger.info "Creating Users"
 Rails.logger.info "==============================================="
 
-user = User.create!(username: Faker::Internet.user_name)
+user = User.create!(
+  username: Faker::Internet.user_name,
+  password: "password",
+  password_confirmation: "password"
+)
 Rails.logger.info "Username: #{user.username}"
 
 Rails.logger.info "==============================================="
