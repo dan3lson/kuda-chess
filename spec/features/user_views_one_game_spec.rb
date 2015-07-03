@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-feature "user views a game\'s show page", %Q{
+feature "user views one game", %{
+
   As a user,
   I want to view a specific game
   and see its moves.
@@ -16,8 +17,8 @@ feature "user views a game\'s show page", %Q{
   let!(:move) { FactoryGirl.create(:move) }
   let!(:move2) { FactoryGirl.create(:move) }
 
-  describe "view game show page" do
-    scenario "\n view game without moves" do
+  describe "\n view game show page" do
+    scenario "scenario: view game without moves" do
       visit game_path(game)
 
       expect(page).to have_content(game.opponent_fname)
@@ -29,7 +30,7 @@ feature "user views a game\'s show page", %Q{
       expect(page).to have_content("1.")
     end
 
-    scenario "\n view game with moves" do
+    scenario "scenario: view game with moves" do
       game2.moves << move
       game2.moves << move2
 

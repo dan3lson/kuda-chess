@@ -3,6 +3,7 @@ FactoryGirl.define do
     sequence(:username) { |n| "bfisch #{n}" }
     password "password"
     password_confirmation "password"
+    # password_digest User.digest("password")
   end
 
   factory :game do

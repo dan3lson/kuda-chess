@@ -90,3 +90,12 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+def log_in
+  visit login_path
+
+  fill_in "Username", with: user.username
+  fill_in "Password", with: user.password
+
+  click_on "Log in"
+end

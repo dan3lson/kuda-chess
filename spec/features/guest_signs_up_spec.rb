@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-feature "guest visits Sign Up page", %{
+feature "guest signs up", %{
+
   As a guest,
   I want to create my account.
 } do
@@ -12,13 +13,13 @@ feature "guest visits Sign Up page", %{
   # [x] I see a button to create my account
   # [x] I can see errors if info isn't valid
 
-  describe "guest signs up" do
-    scenario "\n with valid data" do
+  describe "\n guest signs up" do
+    scenario "scenario: with valid data" do
       before_count = User.count
 
       visit root_path
 
-      click_on "Sign Up"
+      click_on "Sign Up for Free"
 
       fill_in "Username", with: "FooFoo"
       fill_in "Password", with: "foobar"
@@ -29,20 +30,21 @@ feature "guest visits Sign Up page", %{
       after_count = User.count
 
       expect(page).to have_content("Welcome to Kuda")
+      # expect(page).to have_content("you don\'t have any games saved.")
       expect(page).to_not have_content("errors")
       expect(page).to_not have_content("fix")
       expect(page).to have_link("Games")
       expect(page).to have_link("New Game")
-      expect(page).to have_link("Profile")
+      expect(page).to have_content("Profile")
       expect(before_count + 1).to eq(after_count)
     end
 
-    scenario "\n with invalid data" do
+    scenario "scenario with invalid data" do
       before_count = User.count
 
       visit root_path
 
-      click_on "Sign Up"
+      click_on "Sign Up for Free"
 
       fill_in "Username", with: ""
       fill_in "Password", with: ""

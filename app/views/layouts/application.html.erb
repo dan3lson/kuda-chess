@@ -18,8 +18,8 @@
         <%= content_tag(:div, message, class: "alert alert-#{message_type} center") %>
       <% end %>
       <%= yield %>
+      <%= render "layouts/logged_in_footer" %>
       <%= debug(params) if Rails.env.development? %>
     </div>
-    <%= render "layouts/logged_in_footer" %>
   </body>
 </html>
