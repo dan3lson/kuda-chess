@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-feature "user edits a game", %Q{
+feature "user edits a game", %{
+
   As a user,
   I want to edit one of my games.
 } do
@@ -13,10 +14,11 @@ feature "user edits a game", %Q{
   #     are left blank
   # [x] Submitting the form redirects to that
   #     game's show page
-  let!(:game) {FactoryGirl.create(:game) }
 
-  describe "edit a Game form" do
-    scenario "\n updates are valid" do
+  describe "\n edit a Game form" do
+    let!(:game) {FactoryGirl.create(:game) }
+
+    scenario "scenario: updates are valid" do
       visit game_path(game)
       click_on "Edit Game"
 
@@ -32,10 +34,10 @@ feature "user edits a game", %Q{
       expect(page).not_to have_content("Game not edited successfully.")
     end
 
-    scenario "\n updates are invalid" do
+    scenario "scenario: updates are invalid" do
       visit game_path(game)
       click_on "Edit Game"
-      
+
       fill_in "Opponent First Name", with: ""
       fill_in "Opponent Last Name", with: ""
       fill_in "Color", with: ""

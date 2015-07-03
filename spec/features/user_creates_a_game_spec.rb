@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-feature "user creates a new game", %Q{
+feature "user creates a new game", %{
+
   As a user,
   I want to add a game
   to my collection.
@@ -15,8 +16,8 @@ feature "user creates a new game", %Q{
   # [x] Submitting the form redirects to that
   #     game's show page
 
-  describe "complete new Game form" do
-    scenario "\n inputs are valid" do
+  describe "\n complete new Game form" do
+    scenario "scenario: inputs are valid" do
       visit new_game_path
 
       fill_in "Opponent First Name", with: "Paul"
@@ -30,7 +31,7 @@ feature "user creates a new game", %Q{
       expect(page).to have_content("Game created successfully.")
     end
 
-    scenario "\n inputs are invalid" do
+    scenario "scenario: inputs are invalid" do
       visit new_game_path
 
       fill_in "Opponent First Name", with: ""
@@ -38,7 +39,7 @@ feature "user creates a new game", %Q{
       fill_in "Color", with: ""
       fill_in "Result", with: ""
       fill_in "Day", with: ""
-      
+
       click_on "Submit"
 
       expect(page).to have_content("Yikes!")

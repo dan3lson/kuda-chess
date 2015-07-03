@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-feature "user deletes an existing game", %Q{
+feature "user deletes an existing game", %{
+
   As a user,
   I want to delete one of
   my games.
@@ -22,7 +23,7 @@ feature "user deletes an existing game", %Q{
     let(:move3) { FactoryGirl.create(:move) }
     let(:move4) { FactoryGirl.create(:move) }
 
-    scenario "from the show page" do
+    scenario "scenario: from the show page" do
       game.moves << move1
       game.moves << move2
       game.moves << move3

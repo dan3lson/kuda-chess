@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-feature "user views all games", %Q{
+feature "user views all games", %{
+
   As a user,
   I want to see all my games
   and click on a result to see
@@ -15,14 +16,17 @@ feature "user views all games", %Q{
   # [x] There are links leading to every game's show page
   # [x] If a game doesn't have moves, display a knight
 
-  let!(:game) { FactoryGirl.create(:game) }
-  let!(:game2) { FactoryGirl.create(:game, result: "lost") }
-  let!(:game3) { FactoryGirl.create(:game, result: "drew") }
-  let!(:game4) { FactoryGirl.create(:game) }
-  let!(:move) { FactoryGirl.create(:move) }
+  describe "\n view all games" do
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:game) { FactoryGirl.create(:game) }
+    let!(:game2) { FactoryGirl.create(:game, result: "lost") }
+    let!(:game3) { FactoryGirl.create(:game, result: "drew") }
+    let!(:game4) { FactoryGirl.create(:game) }
+    let!(:move) { FactoryGirl.create(:move) }
 
-  describe "view all games" do
-    scenario "\n games without moves" do
+    scenario "scenario: games without moves" do
+      log_in
+
       visit games_path
 
       expect(page).to have_content(game.opponent_fname)
@@ -44,8 +48,11 @@ feature "user views all games", %Q{
       expect(page).to have_link("Profile")
     end
 
-    scenario "\n games with moves" do
+    scenario "scenario: games with moves" do
       game4.moves << move
+
+      log_in
+
       visit games_path
 
       expect(page).to have_content(game4.opponent_fname)

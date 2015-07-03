@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-feature "user creates one move for a game", %Q{
+feature "user creates one move for a game", %{
+
   As a user,
   I want to add one move to a
   a game I've already saved.
@@ -17,10 +18,10 @@ feature "user creates one move for a game", %Q{
   # [x] I see errors on the page if fields
   #     are left blank
 
-  let(:game) { FactoryGirl.create(:game) }
+  describe "\n complete new Move form" do
+    let(:game) { FactoryGirl.create(:game) }
 
-  describe "complete new Move form" do
-    scenario "\n inputs are valid" do
+    scenario "scenario: inputs are valid" do
       visit game_path(game)
 
       fill_in "White", with: "d4"
@@ -32,7 +33,7 @@ feature "user creates one move for a game", %Q{
       expect(page).to have_content("d5")
     end
 
-    scenario "\n inputs are invalid" do
+    scenario "scenario: inputs are invalid" do
       visit game_path(game)
 
       fill_in "White", with: ""

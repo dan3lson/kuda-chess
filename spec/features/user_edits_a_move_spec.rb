@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-feature "user edits a move", %Q{
+feature "user edits a move", %{
+
   As a user,
   I want to edit one of my moves.
 } do
@@ -14,11 +15,11 @@ feature "user edits a move", %Q{
   # [x] Submitting the form redirects to that
   #     game's show page
 
-  let!(:game) {FactoryGirl.create(:game) }
-  let!(:move) {FactoryGirl.create(:move) }
+  describe "\n edit a Move form" do
+    let!(:game) {FactoryGirl.create(:game) }
+    let!(:move) {FactoryGirl.create(:move) }
 
-  describe "edit a Move form" do
-    scenario "\n updates are valid" do
+    scenario "scenario: updates are valid" do
       visit edit_game_move_path(game, move)
       # click_on "&#10000;".html_safe
       fill_in "White", with: "c4"
@@ -29,7 +30,7 @@ feature "user edits a move", %Q{
       expect(page).not_to have_content("Move not edited successfully.")
     end
 
-    scenario "\n updates are invalid" do
+    scenario "scenario: updates are invalid" do
       visit edit_game_move_path(game, move)
       # click_on "✐"
       fill_in "White", with: ""
