@@ -1,20 +1,18 @@
 <% provide(:header, 'Sign Up') %>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3 well">
-    <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages' %>
+<div class="col-md-6 col-md-offset-3 well">
+  <%= form_for(@user) do |f| %>
+    <%= render 'shared/error_messages' %>
 
-      <%= f.label :username, class: "sr-only" %>
-      <%= f.text_field :username, class: "form-control", placeholder: "Username *"  %>
+    <%= f.label :username, class: "sr-only" %>
+    <%= f.text_field :username, class: "form-control", placeholder: "Username *"  %>
 
-      <%= f.label :password, class: "sr-only" %>
-      <%= f.password_field :password, class: "form-control", placeholder: "Password *" %>
+    <%= f.label :password, class: "sr-only" %>
+    <%= f.password_field :password, class: "form-control", placeholder: "Password *" %>
 
-      <%= f.label :password_confirmation, "Password Confirmation", class: "sr-only" %>
-      <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Password Confirmation *"  %>
+    <%= f.label :password_confirmation, "Password Confirmation", class: "sr-only" %>
+    <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Password Confirmation *"  %>
 
-      <%= f.submit "Create my account", class: "btn btn-default" %>
-    <% end %>
-  </div>
+    <%= f.submit "Create my account", class: "btn btn-default" %>
+  <% end %>
 </div>

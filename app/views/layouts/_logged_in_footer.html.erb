@@ -1,34 +1,26 @@
-<% if logged_in? %>
-	<footer class="navbar navbar-default navbar-fixed-bottom navbar_footer" role="navigation">
-	<br/>
-		<div class="row">
-			<div class="col-xs-4" align="center">
-				<%=
-	        link_to_unless_current image_tag("games_clicked_32.png") +
-	  			"<br/>Games".html_safe, games_path,
-	  			alt: "Games", class: "img-responsive footer_active_link"
-	      %>
-			</div>
-			<div class="col-xs-4" align="center">
-				<%=
-					link_to_unless_current image_tag("new_game_clicked_32.png") +
-					"<br/>New Game".html_safe, new_game_path,
-					alt: "New Game", class: "img-responsive"
-				%>
-			</div>
-			<div class="col-xs-4" align="center">
-				<%=
-					link_to_unless_current image_tag("profile_clicked_32.png") +
-					"<br/>Profile".html_safe, current_user,
-					alt: "Profile", class: "img-responsive"
-				%>
-			</div>
+<footer class="navbar navbar-default navbar-fixed-bottom navbar_footer" role="navigation">
+<br/>
+	<div class="row">
+		<div class="col-xs-4" align="center">
+			<%=
+        link_to_unless_current image_tag("games_clicked_32.png") +
+  			"<br/>Games".html_safe, games_path,
+  			alt: "Games", class: "img-responsive footer_active_link"
+      %>
 		</div>
-	</footer>
-<% else %>
-	<div class="center">
-		<small>
-			Copyright 2015 Kuda
-		</small>
+		<div class="col-xs-4" align="center">
+			<%=
+				link_to_unless_current image_tag("new_game_clicked_32.png") +
+				"<br/>New Game".html_safe, new_game_path,
+				alt: "New Game", class: "img-responsive"
+			%>
+		</div>
+		<div class="col-xs-4" align="center">
+			<%=
+				link_to_unless_current image_tag("profile_clicked_32.png") +
+				"<br/>Profile".html_safe, current_user,
+				alt: "Profile", class: "img-responsive"
+			%>
+		</div>
 	</div>
-<% end %>
+</footer>

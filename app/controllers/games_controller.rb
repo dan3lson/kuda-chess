@@ -17,9 +17,8 @@ class GamesController < ApplicationController
   end
 
   def create
-    @user = User.first
     @game = Game.new(game_params)
-    @game.user = @user
+    @game.user = current_user
     if @game.save
       flash[:success] = "Game created successfully."
       redirect_to @game

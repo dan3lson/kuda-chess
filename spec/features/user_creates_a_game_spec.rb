@@ -17,7 +17,11 @@ feature "user creates a new game", %{
   #     game's show page
 
   describe "\n complete new Game form" do
+    let(:user) { FactoryGirl.create(:user) }
+
     scenario "scenario: inputs are valid" do
+      log_in
+
       visit new_game_path
 
       fill_in "Opponent First Name", with: "Paul"
@@ -29,9 +33,12 @@ feature "user creates a new game", %{
       click_on "Submit"
 
       expect(page).to have_content("Game created successfully.")
+      expect(user.games.count).to eq(1)
     end
 
     scenario "scenario: inputs are invalid" do
+      log_in
+
       visit new_game_path
 
       fill_in "Opponent First Name", with: ""
@@ -45,6 +52,7 @@ feature "user creates a new game", %{
       expect(page).to have_content("Yikes!")
       expect(page).to have_content("errors")
       expect(page).to have_content("Please fix")
+      expect(user.games.count).to eq(0)
     end
   end
 end

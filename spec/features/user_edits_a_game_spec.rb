@@ -16,10 +16,14 @@ feature "user edits a game", %{
   #     game's show page
 
   describe "\n edit a Game form" do
-    let!(:game) {FactoryGirl.create(:game) }
+    let!(:game) { FactoryGirl.create(:game) }
+    let(:user) { game.user }
 
     scenario "scenario: updates are valid" do
+      log_in
+
       visit game_path(game)
+
       click_on "Edit Game"
 
       fill_in "Opponent First Name", with: "Paulie"
@@ -32,10 +36,14 @@ feature "user edits a game", %{
 
       expect(page).to have_content("Game edited successfully.")
       expect(page).not_to have_content("Game not edited successfully.")
+      expect(user.games.count).to eq(1)
     end
 
     scenario "scenario: updates are invalid" do
+      log_in
+
       visit game_path(game)
+
       click_on "Edit Game"
 
       fill_in "Opponent First Name", with: ""

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update]
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update]
 
   def index
     @users = User.order("username")
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in(@user)
       flash[:success] = "Welcome to Kuda, #{@user.username}!"
-      redirect_to @user
+      redirect_to games_path
     else
       render :new
     end
@@ -53,13 +53,9 @@ class UsersController < ApplicationController
 
   def correct_user
     @user = User.find(params[:id])
-    puts "\nCURRENT USER #{current_user.id}\n\n"
-    puts "\n@USER #{@user.id}\n\n"
-    puts "\nCURRENT USER??? #{current_user?(@user)}\n\n"
     unless current_user?(@user)
-      binding.pry
       flash[:danger] = "Yikes! That\'s not something you can do."
-      redirect_to root_path
+      redirect_to games_path
     end
   end
 end

@@ -17,13 +17,16 @@ feature "user deletes an existing game", %{
   # Are test objects being deleted after each scenario, etc.?
 
   describe "\n delete move from its show page" do
-    let(:game) { FactoryGirl.create(:game) }
     let(:move1) { FactoryGirl.create(:move) }
+    let(:user) { game.user }
+    let(:game) { move1.game }
     let(:move2) { FactoryGirl.create(:move) }
     let(:move3) { FactoryGirl.create(:move) }
     let(:move4) { FactoryGirl.create(:move) }
 
     scenario "scenario: from the show page" do
+      log_in
+
       game.moves << move1
       game.moves << move2
       game.moves << move3
