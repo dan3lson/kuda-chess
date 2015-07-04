@@ -1,10 +1,13 @@
 <div class="center">
-  <%= image_tag "kuda.png" %>
+  <div>
+    <%= image_tag "kuda.png" %>
+  </div>
   <div>
     <%= link_to "Sign Up for Free", signup_path, class: "btn btn-lg btn-default " %>
-    <p>
+    <br/>
+    <small>
       Already have an account?
       <%= link_to "Log in", login_path %>.
-    </p>
+    </small>
   </div>
 </div>

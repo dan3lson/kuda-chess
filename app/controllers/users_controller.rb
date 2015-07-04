@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in(@user)
       flash[:success] = "Welcome to Kuda, #{@user.username}!"
-      redirect_to games_path
+      redirect_to my_games_path
     else
       render :new
     end
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     unless current_user?(@user)
       flash[:danger] = "Yikes! That\'s not something you can do."
-      redirect_to games_path
+      redirect_to edit_user_path(current_user)
     end
   end
 end

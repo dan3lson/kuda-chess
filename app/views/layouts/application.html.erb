@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Kuda</title>
+    <title>Kuda | <%= full_title(yield(:title)) %></title>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
@@ -22,8 +22,12 @@
         <%= render "layouts/logged_in_footer" %>
       <% else %>
       	<div class="center">
+          <br/>
+          <br/>
+          <br/>
       		<small>
-      			Copyright 2015 Kuda
+      			&copy; Copyright 2015
+            <%= link_to "Kuda Chess", root_path %>
       		</small>
       	</div>
       <% end %>

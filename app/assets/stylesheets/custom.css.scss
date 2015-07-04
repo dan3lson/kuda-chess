@@ -15,12 +15,18 @@
 
 $lighten: 23%;
 
-$circle_size: 25px;
+$circle_size: 20px;
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 800px;
+  }
 }
 
 //**********
@@ -74,20 +80,12 @@ body {
 	border: 1px solid #FFF;
 }
 
-.recap_container {
-	opacity: .6;
-}
-
 .vertical_align {
-	vertical-align: 7px;
+	vertical-align: 2px;
 }
 
 #no_games_container {
 	margin-top: 10em;
-}
-
-.recap_container {
-	opacity: .6;
 }
 
 #recap_won {
@@ -104,10 +102,11 @@ body {
 
 #recap_won a {
 	color: green;
+
 }
 
 #recap_won a:hover {
-	color: darken(green, $lighten);
+	color: lighten(green, $lighten);
 	text-decoration: none;
 }
 
@@ -116,7 +115,7 @@ body {
 }
 
 #recap_lost a:hover {
-	color: darken(red, $lighten);
+	color: lighten(red, $lighten);
 	text-decoration: none;
 }
 
@@ -125,7 +124,7 @@ body {
 }
 
 #recap_drew a:hover {
-	color: darken(orange, $lighten);
+	color: lighten(orange, $lighten);
 	text-decoration: none;
 }
 .game_card_container {

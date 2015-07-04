@@ -2,36 +2,40 @@
   <th></th>
   <th>White</th>
   <th>Black</th>
-  <th></th>
-  <th></th>
+  <% if logged_in_and_current_user?(@game.user) %>
+    <th></th>
+    <th></th>
+  <% end %>
   <% @game.moves.reverse.each_with_index do |move, num| %>
     <tr>
       <td><%= num + 1 %>.</td>
       <td><%= move.white %></td>
       <td><%= move.black %></td>
-      <td>
-        <%=
-          # "Edit" only temporary to make
-          # the tests pass. Not yet sure
-          # how to get HTML entities pass
-          # with Capybara.
-          # link_to "&#10000;".html_safe,
-          link_to "Edit",
-          edit_game_move_path(@game, move),
-          class: "blank_hover_link"
-        %>
-      </td>
-      <td>
-        <%=
-          # "Delete" only temporary to make
-          # the tests pass. Not yet sure
-          # how to get HTML entities pass
-          # with Capybara.
-          # link_to "&#10006;".html_safe,
-          link_to "Delete", game_move_path(@game, move),
-          method: :delete
-        %>
-      </td>
+      <% if logged_in_and_current_user?(@game.user) %>
+        <td>
+          <%=
+            # "Edit" only temporary to make
+            # the tests pass. Not yet sure
+            # how to get HTML entities pass
+            # with Capybara.
+            # link_to "&#10000;".html_safe,
+            link_to "Edit",
+            edit_game_move_path(@game, move),
+            class: "blank_hover_link"
+          %>
+        </td>
+        <td>
+          <%=
+            # "Delete" only temporary to make
+            # the tests pass. Not yet sure
+            # how to get HTML entities pass
+            # with Capybara.
+            # link_to "&#10006;".html_safe,
+            link_to "Delete", game_move_path(@game, move),
+            method: :delete
+          %>
+        </td>
+      <% end %>
     </tr>
   <% end %>
 </table>

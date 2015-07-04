@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-feature "user views one game", %{
+feature "guest views one game", %{
 
-  As a user,
+  As a guest,
   I want to view a specific game
   and see its moves.
 } do
@@ -26,8 +26,8 @@ feature "user views one game", %{
       expect(page).to have_css("span.white_circle")
       expect(page).to have_content(game.result)
       expect(page).to have_content("on")
-      expect(page).to have_content("♘ This game is empty. ♘")
-      expect(page).to have_content("1.")
+      expect(page).to have_content("This game is empty.")
+      # expect(page).to have_content("1.")
     end
 
     scenario "scenario: view game with moves" do
@@ -40,11 +40,10 @@ feature "user views one game", %{
       expect(page).to have_content(game2.opponent_lname)
       expect(page).to have_css("span.white_circle")
       expect(page).to have_content(game2.result)
-      expect(page).not_to have_content("♘ This game is empty. ♘")
+      expect(page).not_to have_content("This game is empty.")
       expect(page).to have_content("on")
       expect(page).to have_content("1.")
       expect(page).to have_content("2.")
-      expect(page).to have_content("3.")
     end
   end
 end

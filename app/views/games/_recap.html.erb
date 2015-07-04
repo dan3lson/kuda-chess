@@ -1,27 +1,21 @@
-<% if @game.color == "white" %>
-  <span class="white_circle"></span>
-<% else %>
-  <span class="black_circle"></span>
-<% end %>
+<div class="lead game_card_container">
+  <%= render "games/circle", { game: game, color: "white" } %>
 
-<span class="result_container">
-  <% if @game.result == "won" %>
-    <span id="result_won">
-      <%= link_to "won", game_path(@game) %>
-    </span>
-  <% elsif @game.result == "lost" %>
-    <span id="result_lost">
-      <%= link_to "lost", game_path(@game) %>
-    </span>
-  <% else %>
-    <span id="result_drew">
-      <%= link_to "drew", game_path(@game) %>
-    </span>
-  <% end %>
-</span>
-against
-<%= @game.opponent_fname %>
-<%= @game.opponent_lname %>
-on <%= @game.display_better_date %><% if @game.has_moves? %>, in a game that lasted
-  <%= pluralize(@game.moves.count, "move") %>.
-<% end %>
+  <span class ="vertical_align">
+    <%= game.user.username %>
+
+    <%= render "games/result", { game: game, index_page: index_page } %>
+  </span>
+
+  <%= render "games/circle", { game: game, color: "black" } %>
+
+  <span class="vertical_align">
+    <%= game.opponent_fname %>
+    <%= game.opponent_lname %>
+    <small>on</small>
+    <%= game.display_better_date %>
+    <% unless game.has_moves? %>
+      &#9816;
+    <% end %>
+  </span>
+</div>

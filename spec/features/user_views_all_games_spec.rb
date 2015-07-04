@@ -17,20 +17,22 @@ feature "user views all games", %{
   # [x] If a game doesn't have moves, display a knight
 
   describe "\n view all games" do
-    let!(:move) { FactoryGirl.create(:move) }
-    let!(:game) { move.game }
-    let!(:user) { game.user }
-    let!(:game2) { FactoryGirl.create(:game, result: "lost") }
-    let!(:game3) { FactoryGirl.create(:game, result: "drew") }
-    let!(:game4) { FactoryGirl.create(:game) }
+    let(:move) { FactoryGirl.create(:move) }
+    let(:game) { move.game }
+    let(:user2) { game.user }
+    let(:user) { game2.user }
+    let!(:game2) { FactoryGirl.create(:game) }
 
     scenario "scenario: games without moves" do
+
       log_in
 
       visit games_path
 
-      expect(page).to have_content(game.opponent_fname)
-      expect(page).to have_content(game.opponent_lname[0] << ".")
+      game2.opponent_fname = "Paul"
+
+      expect(page).to have_content(game2.opponent_fname)
+      expect(page).to have_content(game2.opponent_lname)
 
       if game.color == "white"
         expect(page).to have_css("span.white_circle")
@@ -38,9 +40,7 @@ feature "user views all games", %{
         expect(page).to have_content("span.black_circle")
       end
 
-      expect(page).to have_link(game.result)
       expect(page).to have_link(game2.result)
-      expect(page).to have_link(game3.result)
       expect(page).to have_content("on")
       expect(page).to have_content("♘")
       expect(page).to have_content("Games")
@@ -49,14 +49,18 @@ feature "user views all games", %{
     end
 
     scenario "scenario: games with moves" do
-      game4.moves << move
+      3.times do
+        game.opponent_lname[-1] = ""
+      end
 
       log_in
 
       visit games_path
 
-      expect(page).to have_content(game4.opponent_fname)
-      expect(page).to have_content(game4.opponent_lname[0] << ".")
+      game.opponent_fname = "Paul"
+
+      expect(page).to have_content(game.opponent_fname)
+      expect(page).to have_content(game.opponent_lname)
 
       if game.color == "white"
         expect(page).to have_css("span.white_circle")
@@ -64,7 +68,7 @@ feature "user views all games", %{
         expect(page).to have_css("span.black_circle")
       end
 
-      expect(page).to have_link(game4.result)
+      expect(page).to have_link(game.result)
       expect(page).to have_content("on")
       # How to test for this for this line?
       # expect(page).to_not have_content("♘")

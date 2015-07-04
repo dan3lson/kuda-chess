@@ -2,12 +2,14 @@ Rails.logger.info "==============================================="
 Rails.logger.info "Creating Users"
 Rails.logger.info "==============================================="
 
-user = User.create!(
-  username: Faker::Internet.user_name,
-  password: "password",
-  password_confirmation: "password"
-)
-Rails.logger.info "Username: #{user.username}"
+10.times do
+  user = User.create!(
+    username: Faker::Internet.user_name,
+    password: "password",
+    password_confirmation: "password"
+  )
+  Rails.logger.info "Username: #{user.username}"
+end
 
 Rails.logger.info "==============================================="
 Rails.logger.info "Creating Games"
@@ -20,7 +22,7 @@ Rails.logger.info "==============================================="
     color: %w(black white).sample,
     result: %w(won lost drew).sample,
     day: Faker::Date.between(356.days.ago, Date.today),
-    user: User.first
+    user: User.all.sample
   )
   Rails.logger.info "Game opponent_fname: #{game.opponent_fname}"
   Rails.logger.info "Game opponent_lname: #{game.opponent_lname}"
