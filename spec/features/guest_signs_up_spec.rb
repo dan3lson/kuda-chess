@@ -30,12 +30,12 @@ feature "guest signs up", %{
       after_count = User.count
 
       expect(page).to have_content("Welcome to Kuda")
-      # expect(page).to have_content("you don\'t have any games saved.")
+      expect(page).to have_content("Hey, you don't have any games. Create a new game now!")
       expect(page).to_not have_content("errors")
       expect(page).to_not have_content("fix")
-      expect(page).to have_link("Games")
+      expect(page).to have_content("Games")
       expect(page).to have_link("New Game")
-      expect(page).to have_content("Profile")
+      expect(page).to have_link("Profile")
       expect(before_count + 1).to eq(after_count)
     end
 

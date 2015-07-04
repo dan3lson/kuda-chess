@@ -15,10 +15,10 @@ RSpec.describe Move, type: :model do
 
   describe "#initialization" do
     it "returns white\'s move string" do
-      expect(move.white).to include("e4")
+      expect(move.white).to include("e")
     end
     it "returns black\'s move string" do
-      expect(move.black).to include("c5")
+      expect(move.black).to include("c")
     end
     it "returns a Game object type" do
       expect(move.game.class).to be(Game)

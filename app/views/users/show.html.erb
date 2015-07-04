@@ -1,8 +1,17 @@
 <% provide(:header, @user.username) %>
 
-<p>
-  <%= link_to "Edit My Info", edit_user_path(current_user), class: "btn btn-default form-control" %>
+<p class="lead">
+  Joined <%= time_ago_in_words(@user.created_at) %> ago.
 </p>
-<p>
-  <%= link_to "Log out", logout_path, method: :delete, class: "btn btn-default form-control" %>
+<p class="lead">
+  Number of games: <%= @user.games.count %>
 </p>
+
+<% if logged_in? && current_user?(@user) %>
+  <p>
+    <%= link_to "Edit My Info", edit_user_path(current_user), class: "btn btn-default form-control" %>
+  </p>
+  <p>
+    <%= link_to "Log out", logout_path, method: :delete, class: "btn btn-default form-control" %>
+  </p>
+<% end %>

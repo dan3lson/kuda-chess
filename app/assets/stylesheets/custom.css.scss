@@ -15,7 +15,7 @@
 
 $lighten: 23%;
 
-$circle_size: 27px;
+$circle_size: 25px;
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -83,7 +83,7 @@ body {
 }
 
 #no_games_container {
-	margin-top: 20em;
+	margin-top: 10em;
 }
 
 .recap_container {

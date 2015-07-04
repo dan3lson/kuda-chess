@@ -9,7 +9,8 @@
       <% else %>
         <span class="black_circle"></span>
       <% end %>
-      <span class="result_container">
+
+      <span class="result_container vertical_align">
         <% if @game.result == "won" %>
           <span id="result_won">
             won
@@ -24,13 +25,15 @@
           </span>
         <% end %>
       </span>
-      against
-      <%= @game.opponent_fname %>
-      <%= @game.opponent_lname %>
-      on <%= @game.display_better_date %><% if @game.has_moves? %>, in a game that lasted
-        <%= pluralize(@game.moves.count, "move") %>.
-      <% else %>.
-      <% end %>
+      <span class="vertical_align">
+        against
+        <%= @game.opponent_fname %>
+        <%= @game.opponent_lname %>
+        on <%= @game.display_better_date %><% if @game.has_moves? %>, in a game that lasted
+          <%= pluralize(@game.moves.count, "move") %>.
+        <% else %>.
+        <% end %>
+      </span>
     </div>
   </div>
 

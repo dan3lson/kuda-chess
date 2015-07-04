@@ -1,14 +1,21 @@
 <% provide(:header, "Games") %>
 
 <% if @games.first.nil? %>
-  <div id="no_games_container" class="center">
-    <p class="lead">
-      Hey there, you don't have any games saved.
+
+  <div id="no_games_container" class="center well well-sm">
+    <h1 class="lead">
+      Hey, you don't have any games.
+      Create a <%= link_to "new game", new_game_path %>
+      now!
     </p>
   </div>
+
 <% else %>
+
   <div class="col-md-6 col-md-offset-3">
+
     <% @games.each do |game| %>
+
       <div class="lead game_card_container">
         <% if game.color == "white" %>
           <span class="white_circle"></span>
@@ -31,6 +38,7 @@
             </span>
           <% end %>
         </span>
+
         <span class="vertical_align">
           <small>against</small>
           <%= game.opponent_fname %>
@@ -41,8 +49,12 @@
             &#9816;
           <% end %>
         </span>
+
       </div>
       <hr/>
+
     <% end %>
+
   </div>
+
 <% end %>

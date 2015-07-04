@@ -17,12 +17,12 @@ feature "user views all games", %{
   # [x] If a game doesn't have moves, display a knight
 
   describe "\n view all games" do
-    let!(:user) { FactoryGirl.create(:user) }
-    let!(:game) { FactoryGirl.create(:game) }
+    let!(:move) { FactoryGirl.create(:move) }
+    let!(:game) { move.game }
+    let!(:user) { game.user }
     let!(:game2) { FactoryGirl.create(:game, result: "lost") }
     let!(:game3) { FactoryGirl.create(:game, result: "drew") }
     let!(:game4) { FactoryGirl.create(:game) }
-    let!(:move) { FactoryGirl.create(:move) }
 
     scenario "scenario: games without moves" do
       log_in

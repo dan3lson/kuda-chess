@@ -18,14 +18,17 @@ feature "user deletes an existing game", %{
 
   describe "\n delete game from its show page" do
     let(:game) { FactoryGirl.create(:game) }
+    let(:user) { game.user }
 
     scenario "scenario: from the show page" do
+      log_in
+
       visit game_path(game)
 
       click_on "Delete Game"
 
       expect(page).to have_content("Game deleted successfully.")
-      expect(Game.count).to eq(0)
+      expect(user.games.count).to eq(0)
     end
   end
 end
