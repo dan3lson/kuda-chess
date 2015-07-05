@@ -52,3 +52,7 @@ group :development, :test do
   # Enables debugging
   gem "launchy"
 end
+
+group :production do
+  gem 'rails_12factor', '0.0.2'
+end
