@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.2'
 # Use postgresql as the database for Active Record
@@ -56,3 +54,5 @@ group :production do
   # Use Unicorn as the app server
   gem 'unicorn'
 end
+
+ruby '2.0.0'
