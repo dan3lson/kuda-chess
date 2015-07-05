@@ -31,12 +31,12 @@ feature "guest signs up", %{
 
       expect(page).to have_content("Welcome to Kuda")
       expect(page).to have_content("Hey, you don't have any games. Create a new game now!")
-      expect(page).to_not have_content("errors")
-      expect(page).to_not have_content("fix")
       expect(page).to have_content("Games")
       expect(page).to have_link("New Game")
       expect(page).to have_link("Profile")
       expect(before_count + 1).to eq(after_count)
+      expect(page).to_not have_content("errors")
+      expect(page).to_not have_content("fix")
     end
 
     scenario "scenario with invalid data" do

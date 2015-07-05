@@ -1,7 +1,8 @@
-<% provide(:header, "Games") %>
+<% provide(:title, "Edit Move") %>
+<% provide(:header, "Edit Move") %>
 
-<div class="lead col-md-6 col-md-offset-3">
-  <%= render "games/recap" %>
+<div>
+  <%= render "games/recap", game: @game, index_page: false %>
   <br/>
   <br/>
   <div class="well">

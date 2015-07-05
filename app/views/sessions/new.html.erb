@@ -1,6 +1,7 @@
+<% provide(:title, "Log In") %>
 <% provide(:header, "Log In") %>
 
-<div class="well col-md-6 col-md-offset-3 center">
+<div class="well center">
   <%= form_for(:session, url: login_path) do |f| %>
 
     <%= f.label :username, class: "sr-only" %>

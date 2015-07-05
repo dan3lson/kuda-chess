@@ -1,6 +1,7 @@
-<% provide(:header, 'Edit Profile') %>
+<% provide(:title, "Edit Profile") %>
+<% provide(:header, "Edit Profile") %>
 
-<div class="col-md-6 col-md-offset-3 well">
+<div class="well">
   <%= form_for(@user) do |f| %>
     <%= render 'shared/error_messages' %>
 

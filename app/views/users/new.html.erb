@@ -1,6 +1,7 @@
-<% provide(:header, 'Sign Up') %>
+<% provide(:title, "Sign Up") %>
+<% provide(:header, "Sign Up") %>
 
-<div class="col-md-6 col-md-offset-3 well">
+<div class="well">
   <%= form_for(@user) do |f| %>
     <%= render 'shared/error_messages' %>
 
@@ -15,4 +16,11 @@
 
     <%= f.submit "Create my account", class: "btn btn-default" %>
   <% end %>
+  <br/>
+  <div class="center">
+    <small>
+      Already have an account?
+      <%= link_to "Log in", login_path %>.
+    </small>
+  </div>
 </div>

@@ -16,10 +16,13 @@ feature "user edits a move", %{
   #     game's show page
 
   describe "\n edit a Move form" do
-    let!(:game) {FactoryGirl.create(:game) }
-    let!(:move) {FactoryGirl.create(:move) }
+    let!(:move) { FactoryGirl.create(:move) }
+    let!(:game) { move.game }
+    let!(:user) { game.user }
 
     scenario "scenario: updates are valid" do
+      log_in
+
       visit edit_game_move_path(game, move)
       # click_on "&#10000;".html_safe
       fill_in "White", with: "c4"
@@ -31,6 +34,7 @@ feature "user edits a move", %{
     end
 
     scenario "scenario: updates are invalid" do
+      log_in
       visit edit_game_move_path(game, move)
       # click_on "✐"
       fill_in "White", with: ""

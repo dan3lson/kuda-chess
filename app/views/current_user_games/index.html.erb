@@ -1,0 +1,37 @@
+<% provide(:title, "Games") %>
+<% provide(:header, "Games") %>
+
+<div class="center">
+  <div class="btn-group" role="group" aria-label="...">
+    <%= link_to "All", games_path, class: "btn btn-default" %>
+    <%= link_to "My Games", my_games_path, class: "btn btn-default disabled" %>
+  </div>
+</div>
+<br/><br/>
+<% if logged_in? %>
+
+  <% if @current_user_games.first.nil? %>
+
+    <div id="no_games_container" class="center well well-sm">
+      <h1 class="lead">
+        Hey, you don't have any games.
+        Create a <%= link_to "new game", new_game_path %>
+        now!
+      </p>
+    </div>
+
+  <% else %>
+
+    <% @current_user_games.each do |game| %>
+      <%= render "games/recap", { game: game, index_page: true } %>
+      <hr/>
+    <% end %>
+
+  <% end %>
+
+<% else %>
+  <div class="center">
+    <%= link_to "Sign Up for Free", signup_path, class: "btn btn-lg btn-default " %>
+  </div>
+
+<% end %>

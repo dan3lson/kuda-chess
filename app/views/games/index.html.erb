@@ -1,60 +1,18 @@
+<% provide(:title, "Games") %>
 <% provide(:header, "Games") %>
 
-<% if @games.first.nil? %>
-
-  <div id="no_games_container" class="center well well-sm">
-    <h1 class="lead">
-      Hey, you don't have any games.
-      Create a <%= link_to "new game", new_game_path %>
-      now!
-    </p>
+<div>
+  <div class="center">
+    <div class="btn-group" role="group" aria-label="...">
+      <%= link_to "All", games_path, class: "btn btn-default disabled" %>
+      <%= link_to "My Games", my_games_path, class: "btn btn-default" %>
+    </div>
   </div>
-
-<% else %>
-
-  <div class="col-md-6 col-md-offset-3">
-
+  <br/><br/>
+  <div class="">
     <% @games.each do |game| %>
-
-      <div class="lead game_card_container">
-        <% if game.color == "white" %>
-          <span class="white_circle"></span>
-        <% else %>
-          <span class="black_circle"></span>
-        <% end %>
-
-        <span class ="vertical_align recap_container">
-          <% if game.result == "won" %>
-            <span id="recap_won">
-              <%= link_to "won", game_path(game) %>
-            </span>
-          <% elsif game.result == "lost" %>
-            <span id="recap_lost">
-              <%= link_to "lost", game_path(game) %>
-            </span>
-          <% else %>
-            <span id="recap_drew">
-              <%= link_to "drew", game_path(game) %>
-            </span>
-          <% end %>
-        </span>
-
-        <span class="vertical_align">
-          <small>against</small>
-          <%= game.opponent_fname %>
-          <%= game.opponent_lname[0] %>.
-          <small>on</small>
-          <%= game.display_better_date %>
-          <% unless game.has_moves? %>
-            &#9816;
-          <% end %>
-        </span>
-
-      </div>
+      <%= render "games/recap", { game: game, index_page: true } %>
       <hr/>
-
     <% end %>
-
   </div>
-
-<% end %>
+</div>

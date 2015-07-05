@@ -1,0 +1,33 @@
+<% if index_page %>
+
+  <% if game.result == "won" %>
+    <span id="recap_won">
+      <%= link_to "won", game_path(game) %>
+    </span>
+  <% elsif game.result == "lost" %>
+    <span id="recap_lost">
+      <%= link_to "lost", game_path(game) %>
+    </span>
+  <% else %>
+    <span id="recap_drew">
+      <%= link_to "drew", game_path(game) %>
+    </span>
+  <% end %>
+
+<% else %>
+
+  <% if game.result == "won" %>
+    <span id="recap_won">
+      won
+    </span>
+  <% elsif game.result == "lost" %>
+    <span id="recap_lost">
+      lost
+    </span>
+  <% else %>
+    <span id="recap_drew">
+      drew
+    </span>
+  <% end %>
+
+<% end %>

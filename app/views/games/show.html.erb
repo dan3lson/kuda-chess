@@ -1,58 +1,20 @@
+<% provide(:title, "Games") %>
 <% provide(:header, "Games") %>
 
-<div class="col-md-6 col-md-offset-3">
-  <div class="lead">
-    <%#= render "games/color_and_result" %>
-    <div class="well">
-      <% if @game.color == "white" %>
-        <span class="white_circle"></span>
-      <% else %>
-        <span class="black_circle"></span>
-      <% end %>
+<%= render "games/recap", { game: @game, index_page: false } %>
 
-      <span class="result_container vertical_align">
-        <% if @game.result == "won" %>
-          <span id="result_won">
-            won
-          </span>
-        <% elsif @game.result == "lost" %>
-          <span id="result_lost">
-            lost
-          </span>
-        <% else %>
-          <span id="result_drew">
-            drew
-          </span>
-        <% end %>
-      </span>
-      <span class="vertical_align">
-        against
-        <%= @game.opponent_fname %>
-        <%= @game.opponent_lname %>
-        on <%= @game.display_better_date %><% if @game.has_moves? %>, in a game that lasted
-          <%= pluralize(@game.moves.count, "move") %>.
-        <% else %>.
-        <% end %>
-      </span>
-    </div>
-  </div>
+<div>
 
   <% if @game.has_moves? %>
     <%= render "games/scoresheet" %>
   <% else %>
     <div class="bg-warning center">
-      &#9816;
       This game is empty.
-      &#9816;
     </div>
   <% end %>
 
-  <div class="well">
-    <p class="lead">
-      Add Move
-    </p>
-    <%= render "moves/form" %>
-  </div>
-
-  <%= render "games/game_links" %>
+  <% if logged_in_and_current_user?(@game.user) %>
+    <%= render "moves/add_move" %>
+    <%= render "games/game_links" %>
+  <% end %>
 </div>
