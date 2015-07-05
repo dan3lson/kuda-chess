@@ -1,0 +1,27 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kuda - simple and easy way to store your chess games online.">
+  <meta name="author" content="Danelson Rosa">
+  <meta name="keywords" content="chess, chess annotation, chess notation, scorebook, scoresheet, chess scoresheet">
+  <meta name="google-site-verification" content="Google Analytics ID">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta property=”og:title” content=”Easily store your games online.” />
+  <meta property=”og:url” content=”https://cryptic-oasis-3561.herokuapp.com/” />
+  <meta property=”og:type” content=”website” />
+  <meta property=”og:description” content=”Kuda - Simple and easy way to store your chess games online” />
+  <meta property=”og:image” content=”http://www.yourdomain.com/image-name.jpg” />
+  <meta name=”twitter:card” content=Kuda - simple and easy way to store your chess games online. />
+  <meta name=”twitter:title” content=”Kuda Chess” />
+  <meta name=”twitter:description” content=”Kuda - simple and easy way to store your chess games online” />
+  <meta name=”twitter:url” content=”https://cryptic-oasis-3561.herokuapp.com/” />
+  <meta name=”twitter:image” content=”http://www.yourdomain.com /image-name.jpg” />
+  <title>Kuda | <%= full_title(yield(:title)) %></title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+    </script>
+  <![endif]-->
+</head>
