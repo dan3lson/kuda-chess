@@ -40,6 +40,11 @@ feature "user views all games", %{
         expect(page).to have_content("span.black_circle")
       end
 
+      # ^^ the test shouldn't have any flow control here
+      # you can set the game color to one and let the
+      # tests have expectations. Then write another
+      # test for the other color
+
       expect(page).to have_link(game2.result)
       expect(page).to have_content("on")
       expect(page).to have_content("♘")

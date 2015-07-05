@@ -27,10 +27,9 @@ feature "user deletes an existing game", %{
     scenario "scenario: from the show page" do
       log_in
 
-      game.moves << move1
-      game.moves << move2
-      game.moves << move3
-      game.moves << move4
+      move2.game = game
+      move3.game = game
+      move4.game = game
 
       visit game_path(game)
 
@@ -39,5 +38,6 @@ feature "user deletes an existing game", %{
       expect(page).to have_content("Move deleted successfully.")
       expect(game.moves.count).to eq(3)
     end
+    # you probably also want to test how deleting affects move order
   end
 end
