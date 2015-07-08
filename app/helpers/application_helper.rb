@@ -3,7 +3,7 @@ module ApplicationHelper
     if title.empty?
       title = "Kuda"
     else
-      title
+      "Kuda | " << title
     end
   end
 

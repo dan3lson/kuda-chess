@@ -17,6 +17,7 @@ feature "user creates one move for a game", %{
   #     I just added
   # [x] I see errors on the page if fields
   #     are left blank
+  # [] I see moves in the correct order
 
   describe "\n complete new Move form" do
     let(:game) { FactoryGirl.create(:game) }
@@ -44,6 +45,34 @@ feature "user creates one move for a game", %{
 
       fill_in "White", with: ""
       fill_in "Black", with: ""
+      click_on "Submit"
+
+      expect(page).to_not have_content("Move successfully added.")
+      expect(page).to have_content("Move not successfully added.")
+      expect(page).to have_content("Yikes! Please fix")
+      expect(page).to have_content("error")
+      expect(game.moves.count).to eq(0)
+    end
+
+    scenario "scenario: moves are in order" do
+      log_in
+
+      visit game_path(game)
+
+      fill_in "White", with: "e4"
+      fill_in "Black", with: "c5"
+      click_on "Submit"
+
+      fill_in "White", with: "Nf3"
+      fill_in "Black", with: "g6"
+      click_on "Submit"
+
+      fill_in "White", with: "d4"
+      fill_in "Black", with: "cxd"
+      click_on "Submit"
+
+      fill_in "White", with: "g6"
+      fill_in "Black", with: "c4"
       click_on "Submit"
 
       expect(page).to_not have_content("Move successfully added.")
