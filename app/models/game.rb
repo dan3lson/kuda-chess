@@ -27,10 +27,12 @@ class Game < ActiveRecord::Base
   end
 
   private
-    def downcase_color
-      self.color.downcase
-    end
-    def downcase_result
-      self.result.downcase
-    end
+
+  def downcase_color
+    self.color.downcase
+  end
+
+  def downcase_result
+    self.result.downcase
+  end
 end

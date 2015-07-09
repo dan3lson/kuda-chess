@@ -29,6 +29,8 @@ feature "user deletes an existing game", %{
 
       expect(page).to have_content("Game deleted successfully.")
       expect(user.games.count).to eq(0)
+      # you should also expect that the games' moves are destroyed too
+      # when the parent game is deleted
     end
   end
 end
